@@ -16,7 +16,7 @@ export class ItemController {
 return this.itemService.addItem(createItemDto)
   }
 
-  @Get(":id")
+  @Get("get_one_item/:id")
   getOneItem(@Param("id") id: number) {
     return this.itemService.getOneItem(id)
   }
