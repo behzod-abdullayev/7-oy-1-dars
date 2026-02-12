@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { ItemService } from "./item.service";
 import { CreateItemDto } from "./dto/create.item.dto";
 import { UpdateItemDto } from "./dto/update.item.dto";
@@ -24,5 +24,10 @@ return this.itemService.addItem(createItemDto)
   @Put ("update_item/:id")
   updateitem(@Param("id") id: number, @Body() updateItemDto: UpdateItemDto ) {
 return this.itemService.updateItem(id, updateItemDto)
+  }
+
+  @Delete ("delete_item/:id")
+  DeleteItem(@Param("id") id: number) {
+return this.itemService.deleteItem(id)
   }
 }

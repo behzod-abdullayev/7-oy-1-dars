@@ -29,7 +29,15 @@ export class ItemService {
     const foundItem = this.items.findIndex((item) => item.id === +id);
     if (foundItem === -1) throw new NotFoundException("item not found");
 
-    this.items[foundItem] = updateItemDto
+    this.items[foundItem] = updateItemDto;
     return this.items[foundItem];
   }
+
+   async deleteItem(id: number): Promise<{message: string}> {
+    const foundItem = this.items.findIndex((item) => item.id === +id);
+    if (foundItem === -1) throw new NotFoundException("item not found");
+    this.items.splice(foundItem, 1)
+    return {message: "item deleted"}
+  }
 }
+
